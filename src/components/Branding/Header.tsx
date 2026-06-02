@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { motion, useReducedMotion } from 'framer-motion';
 import { AtomityLogo } from './AtomityLogo';
 
@@ -6,7 +7,7 @@ const navLinks = [
   { label: 'Dashboard', href: '#dashboard' },
   { label: 'Workloads', href: '#workloads' },
   { label: 'Compliance', href: '#compliance' },
-  { label: 'Sustainability', href: '#sustainability' },
+  { label: 'Sustainability', href: '/sustainability' },
 ];
 
 /**
@@ -15,7 +16,14 @@ const navLinks = [
  */
 export const Header: React.FC = () => {
   const shouldReduce = useReducedMotion();
+  const router = useRouter();
   const [active, setActive] = useState('Dashboard');
+
+  useEffect(() => {
+    if (router.pathname === '/sustainability') {
+      setActive('Sustainability');
+    }
+  }, [router.pathname]);
 
   return (
     <motion.header
