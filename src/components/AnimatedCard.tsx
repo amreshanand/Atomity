@@ -15,6 +15,23 @@ export const AnimatedCard: React.FC<Props> = ({ title, value, videoSrc }) => {
   const count = useCountUp(value, 1000 + Math.min(800, value * 2));
 
   const previewRef = useRef<PlayPreviewHandle | null>(null);
+  const innerRef = useRef<HTMLDivElement | null>(null);
+
+  function handlePointerMove(e: React.PointerEvent) {
+    if (!innerRef.current || shouldReduce) return;
+    const rect = innerRef.current.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    const rotateY = (px - 0.5) * 10; // degrees
+    const rotateX = (0.5 - py) * 8; // degrees
+    const translateZ = 8;
+    innerRef.current.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+  }
+
+  function handlePointerLeave() {
+    if (!innerRef.current) return;
+    innerRef.current.style.transform = '';
+  }
 
   return (
     <motion.li
@@ -39,7 +56,13 @@ export const AnimatedCard: React.FC<Props> = ({ title, value, videoSrc }) => {
           }
         }}
       >
-        <div className="relative rounded-[var(--radius-1)] bg-[color:var(--color-bg-primary)]/45 p-4" style={{ transformStyle: 'preserve-3d' }}>
+        <div
+          ref={innerRef}
+          onPointerMove={handlePointerMove}
+          onPointerLeave={handlePointerLeave}
+          className="relative rounded-[var(--radius-1)] bg-[color:var(--color-bg-primary)]/45 p-4"
+          style={{ transformStyle: 'preserve-3d', transition: 'transform 180ms ease-out' }}
+        >
           <div className="text-sm text-white/70">{title}</div>
           <div className="mt-3 text-3xl font-semibold" aria-live="polite">{count.toLocaleString()}</div>
           <div className="mt-2 text-xs text-white/60">since last week</div>
