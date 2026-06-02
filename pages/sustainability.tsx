@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Header } from '../src/components/Branding/Header';
 import { Footer } from '../src/components/Branding/Footer';
 import { SandField } from '../src/components/Sustainability/SandField';
+import { Sustainability3DScene } from '../src/components/Sustainability/Sustainability3DScene';
 import { useCloudMetrics } from '../src/hooks/useCloudMetrics';
 
 const sustainabilityPillars = [
@@ -30,51 +31,6 @@ const metricsMap = [
   { label: 'GCP', tone: 'from-indigo-300/30 to-indigo-500/10' },
   { label: 'On-prem', tone: 'from-emerald-300/30 to-emerald-500/10' },
 ];
-
-function PreviewFrame() {
-  const shouldReduce = useReducedMotion();
-
-  return (
-    <motion.div
-      className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl"
-      initial={{ opacity: 0, y: 30, rotateX: 12 }}
-      whileInView={shouldReduce ? { opacity: 1, y: 0 } : { opacity: 1, y: 0, rotateX: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
-      transition={{ type: 'spring', stiffness: 120, damping: 18 }}
-      style={{ transformStyle: 'preserve-3d', perspective: 1200 }}
-    >
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/10 to-transparent" />
-        <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent" />
-        <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent" />
-      </div>
-      <div className="relative aspect-[16/10] bg-[#07111d]">
-        <video
-          src="/micro-preview.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover opacity-85"
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(59,130,246,0.18),transparent_40%),linear-gradient(180deg,rgba(6,17,38,0.04),rgba(6,17,38,0.82))]" />
-        <div className="absolute left-4 top-4 rounded-full border border-cyan-300/25 bg-cyan-400/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-100">
-          Live preview from clip
-        </div>
-        <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.28em] text-white/50">Sustainability cockpit</p>
-            <h3 className="mt-1 text-lg font-semibold text-white">Orchestrate. Optimize. Sustain.</h3>
-          </div>
-          <div className="rounded-2xl border border-white/10 bg-black/35 px-3 py-2 text-right text-xs text-white/65 backdrop-blur-md">
-            <div className="font-semibold text-white">Carbon-aware</div>
-            <div>Live workload preview</div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
 
 export default function SustainabilityPage() {
   const shouldReduce = useReducedMotion();
@@ -162,7 +118,7 @@ export default function SustainabilityPage() {
 
               <div className="relative">
                 <div className="absolute inset-0 translate-y-8 rounded-[36px] bg-[radial-gradient(circle_at_50%_0%,rgba(245,158,11,0.18),transparent_65%)] blur-2xl" />
-                <PreviewFrame />
+                <Sustainability3DScene />
               </div>
             </div>
           </section>
