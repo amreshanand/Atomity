@@ -66,9 +66,9 @@ export const Sustainability3DScene: React.FC = () => {
         <div className="absolute bottom-[-12%] left-[18%] h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,rgba(34,197,94,0.14),transparent_65%)] blur-3xl" />
       </div>
 
-      <div className="absolute inset-0 [transform-style:preserve-3d]">
+      <div className="absolute inset-0 [transform-style:preserve-3d] overflow-visible">
         <motion.div
-          className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10"
+          className="absolute left-1/2 top-1/2 h-[540px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10"
           style={{ transform: 'translate(-50%, -50%) translateZ(-120px)' }}
           animate={shouldReduce ? {} : { rotate: 360 }}
           transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
@@ -98,16 +98,16 @@ export const Sustainability3DScene: React.FC = () => {
 
         {storyCards.map((card, index) => {
           const positions = [
-            { x: -300, y: -145, z: 120, rotateY: 18, rotateX: 8 },
-            { x: 300, y: -130, z: 140, rotateY: -18, rotateX: 10 },
-            { x: 0, y: 250, z: 180, rotateY: 0, rotateX: -14 },
+            { x: -360, y: -160, z: 100, rotateY: 18, rotateX: 8 },
+            { x: 360, y: -160, z: 110, rotateY: -18, rotateX: 10 },
+            { x: 0, y: 290, z: 140, rotateY: 0, rotateX: -14 },
           ];
           const position = positions[index];
 
           return (
             <motion.div
               key={card.title}
-              className={`absolute left-1/2 top-1/2 w-[220px] -translate-x-1/2 -translate-y-1/2 rounded-[26px] border border-white/10 bg-gradient-to-br ${card.accent} p-4 shadow-[0_20px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl`}
+              className={`absolute left-1/2 top-1/2 w-[180px] -translate-x-1/2 -translate-y-1/2 rounded-[24px] border border-white/10 bg-gradient-to-br ${card.accent} p-3 shadow-[0_20px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl`}
               style={{
                 transform: `translate3d(${position.x}px, ${position.y}px, ${position.z}px) rotateY(${position.rotateY}deg) rotateX(${position.rotateX}deg)`,
               }}
@@ -119,8 +119,8 @@ export const Sustainability3DScene: React.FC = () => {
               whileHover={shouldReduce ? {} : { scale: 1.04, zIndex: 40 }}
             >
               <div className="text-[10px] uppercase tracking-[0.28em] text-white/50">{card.eyebrow}</div>
-              <div className="mt-2 text-2xl font-semibold text-white">{card.title}</div>
-              <p className="mt-3 text-sm leading-6 text-white/72">{card.body}</p>
+              <div className="mt-2 text-xl font-semibold text-white">{card.title}</div>
+              <p className="mt-2 text-xs leading-5 text-white/72">{card.body}</p>
             </motion.div>
           );
         })}
