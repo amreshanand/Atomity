@@ -7,15 +7,17 @@ type Kpi = {
 };
 
 async function fetchKpis(): Promise<Kpi[]> {
-  const res = await fetch('https://dummyjson.com/products?limit=4');
-  if (!res.ok) throw new Error('Failed to fetch');
-  const json = await res.json();
-  // Map products to KPI-like items
-  return json.products.map((p: any, i: number) => ({
-    id: p.id,
-    title: p.title,
-    value: Math.max(1, Math.floor(p.rating * 100)),
-  }));
+  // Simulating an API call to the Atomity orchestration backend
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([
+        { id: 1, title: 'Carbon Offset (tons CO2e)', value: 436 },
+        { id: 2, title: 'Idle Compute Nodes Reclaimed', value: 286 },
+        { id: 3, title: 'Avg Latency Savings (ms)', value: 124 },
+        { id: 4, title: 'Active Cloud Regions', value: 24 },
+      ]);
+    }, 600);
+  });
 }
 
 export function useKpiData() {

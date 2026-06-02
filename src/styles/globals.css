@@ -11,6 +11,10 @@
   --color-accent-2: #8b5cf6; /* accent purple */
   --color-accent-success: #22c55e;
   --color-accent-error: #ff5252;
+  --color-awsOrange: #FF9900;
+  --color-azureBlue: #0078D4;
+  --color-gcpBlue: #4285F4;
+  --color-onPremGray: #8A9BB8;
   --space-1: 8px;
   --space-2: 16px;
   --radius-1: 12px;
