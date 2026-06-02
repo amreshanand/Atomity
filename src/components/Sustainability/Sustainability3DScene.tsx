@@ -94,21 +94,6 @@ export const Sustainability3DScene: React.FC = () => {
             className="absolute inset-0 h-full w-full rounded-[40px] object-cover opacity-80"
           />
           <div className="absolute inset-0 rounded-[40px] bg-[radial-gradient(circle_at_50%_20%,rgba(59,130,246,0.22),transparent_40%),linear-gradient(180deg,rgba(6,17,38,0.08),rgba(6,17,38,0.74))]" />
-          <div className="absolute left-5 top-5 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-white/70 backdrop-blur-md">
-            Video context in 3D
-          </div>
-          <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
-            <div>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-white/45">Orchestrate · Optimize · Sustain</p>
-              <h3 className="mt-2 max-w-[18rem] text-2xl font-semibold leading-tight text-white">
-                Carbon-aware routing built into a live control room.
-              </h3>
-            </div>
-            <div className="rounded-2xl border border-white/10 bg-black/35 px-3 py-2 text-right text-xs text-white/70 backdrop-blur-md">
-              <div className="font-semibold text-white">$11,435</div>
-              <div>live savings today</div>
-            </div>
-          </div>
         </motion.div>
 
         {storyCards.map((card, index) => {
@@ -141,9 +126,6 @@ export const Sustainability3DScene: React.FC = () => {
         })}
       </div>
 
-      <div className="absolute inset-x-6 bottom-6 rounded-[24px] border border-white/10 bg-black/25 px-4 py-3 text-xs uppercase tracking-[0.25em] text-white/55 backdrop-blur-md">
-        A 3D composition of the clip’s story: control layer, optimization layer, and sustainability layer.
-      </div>
     </motion.div>
   );
 };

@@ -119,6 +119,14 @@ export default function SustainabilityPage() {
               <div className="relative">
                 <div className="absolute inset-0 translate-y-8 rounded-[36px] bg-[radial-gradient(circle_at_50%_0%,rgba(245,158,11,0.18),transparent_65%)] blur-2xl" />
                 <Sustainability3DScene />
+                <div className="mt-4 grid gap-3 md:grid-cols-[1.1fr_0.9fr]">
+                  <div className="rounded-[24px] border border-white/10 bg-black/35 px-4 py-3 text-xs uppercase tracking-[0.25em] text-white/55 backdrop-blur-md">
+                    Video context in 3D: control layer, optimization layer, and sustainability layer.
+                  </div>
+                  <div className="rounded-[24px] border border-cyan-300/15 bg-cyan-400/10 px-4 py-3 text-right text-xs uppercase tracking-[0.25em] text-cyan-100 backdrop-blur-md">
+                    Carbon-aware routing with live savings: $11,435
+                  </div>
+                </div>
               </div>
             </div>
           </section>
