@@ -3,19 +3,21 @@ import { motion } from 'framer-motion';
 import { useKpiData } from '../hooks/useKpiData';
 import { AnimatedCard } from './AnimatedCard';
 import { AnimatedPipeline } from './AnimatedPipeline';
+import { Particles } from './Particles';
 
 export const FeatureSection: React.FC = () => {
   const { data, isLoading, isError, refetch } = useKpiData();
 
   return (
-    <section aria-labelledby="feature-heading" className="py-20">
+    <section aria-labelledby="feature-heading" className="py-20 relative overflow-hidden">
+      <Particles />
       <div className="container">
         <h2 id="feature-heading" className="text-3xl font-bold mb-6">Cloud optimization — Live insights</h2>
 
         <AnimatedPipeline />
 
         <motion.div
-          className="grid gap-4"
+          className="grid gap-4 kpi-grid"
           style={{
             gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
           }}

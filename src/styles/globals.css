@@ -30,3 +30,37 @@ body {
 }
 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* KPI Grid container for container queries */
+.kpi-grid {
+  container-type: inline-size;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@container (min-width: 1000px) {
+  .kpi-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Focus styles */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-accent-primary) 40%, black);
+  outline-offset: 3px;
+}
