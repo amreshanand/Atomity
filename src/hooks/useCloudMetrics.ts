@@ -35,24 +35,25 @@ export const optimizeCloudMetrics = (current: CloudMetrics): CloudMetrics => {
   };
 };
 
-// Mock fetch function – replace with real API later
+const DEFAULT_METRICS: CloudMetrics = {
+  metrics: [
+    { provider: 'aws', utilization: 58 },
+    { provider: 'azure', utilization: 34 },
+    { provider: 'gcp', utilization: 82 },
+    { provider: 'onprem', utilization: 25 },
+  ],
+  savings: 11435,
+};
+
+// Stable mock fetch function – replace with real API later.
 const fetchMetrics = async (): Promise<CloudMetrics> => {
   // Simulate 300 ms latency
   await new Promise((resolve) => setTimeout(resolve, 300));
-  return {
-    metrics: [
-      { provider: 'aws', utilization: Math.round(Math.random() * 100) },
-      { provider: 'azure', utilization: Math.round(Math.random() * 100) },
-      { provider: 'gcp', utilization: Math.round(Math.random() * 100) },
-      { provider: 'onprem', utilization: Math.round(Math.random() * 100) },
-    ],
-    savings: Math.round(8000 + Math.random() * 5000),
-  };
+  return DEFAULT_METRICS;
 };
 
 export const useCloudMetrics = () => {
   return useQuery<CloudMetrics>(['cloudMetrics'], fetchMetrics, {
     staleTime: 5 * 60 * 1000, // 5 min
-    refetchInterval: 30 * 1000, // update ticker every 30 s
   });
 };
